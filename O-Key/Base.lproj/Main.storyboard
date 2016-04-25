@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="O_Key" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="O_Key" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -61,7 +61,7 @@
         <!--Login View Controller-->
         <scene sceneID="PSE-yu-9wM">
             <objects>
-                <viewController id="b1q-lN-Hx1" customClass="LoginViewController" customModule="O_Key" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="b1q-lN-Hx1" customClass="LoginViewController" customModule="O_Key" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a8C-UZ-TgD"/>
                         <viewControllerLayoutGuide type="bottom" id="gIm-S6-ZS5"/>
@@ -91,13 +91,15 @@
                                 </state>
                                 <connections>
                                     <action selector="Login:" destination="b1q-lN-Hx1" eventType="touchUpInside" id="Ca9-II-6EL"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="sVG-Hz-xBr"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KNK-jC-AYp">
                                 <rect key="frame" x="107" y="319" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="b1q-lN-Hx1" id="sCe-by-pgA"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

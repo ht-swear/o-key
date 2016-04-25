@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // 一度ログインしたら再度ログイン画面にはいかない
+        let userDefaults:NSUserDefaults = NSUserDefaults()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let firstViewController = storyBoard.instantiateViewControllerWithIdentifier("FirstViewController")
+        let loginViewController = storyBoard.instantiateViewControllerWithIdentifier("LoginViewController")
+        //        userDefaults.removeObjectForKey("uid")
+        if userDefaults.objectForKey("name") != nil{
+            self.window?.rootViewController = firstViewController
+        }
+        else{
+            self.window?.rootViewController = loginViewController
+        }
         return true
     }
 

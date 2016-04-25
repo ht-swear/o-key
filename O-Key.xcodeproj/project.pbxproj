@@ -13,6 +13,8 @@
 		2D04D1121CBE966100BD8600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D04D1111CBE966100BD8600 /* Assets.xcassets */; };
 		2D04D1151CBE966100BD8600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D04D1131CBE966100BD8600 /* LaunchScreen.storyboard */; };
 		2D19F8611CC9BA9F00D907AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F8601CC9BA9F00D907AF /* LoginViewController.swift */; };
+		B1F8D0C81CCE70A900CBC072 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F8D0C71CCE70A900CBC072 /* SVProgressHUD.framework */; };
+		FE5C195371897440E5A9C126 /* Pods_O_Key.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1F4BBE17E8F19A31FC25 /* Pods_O_Key.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		2D04D1141CBE966100BD8600 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D04D1161CBE966100BD8600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D19F8601CC9BA9F00D907AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		887AFE9C1C226173D0FE13D3 /* Pods-O-Key.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-O-Key.release.xcconfig"; path = "Pods/Target Support Files/Pods-O-Key/Pods-O-Key.release.xcconfig"; sourceTree = "<group>"; };
+		8CED1F4BBE17E8F19A31FC25 /* Pods_O_Key.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_O_Key.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F8D0C71CCE70A900CBC072 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD.framework"; sourceTree = "<group>"; };
+		ED7F2CD0E664CF41F2ABF9F0 /* Pods-O-Key.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-O-Key.debug.xcconfig"; path = "Pods/Target Support Files/Pods-O-Key/Pods-O-Key.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F8D0C81CCE70A900CBC072 /* SVProgressHUD.framework in Frameworks */,
+				FE5C195371897440E5A9C126 /* Pods_O_Key.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +50,8 @@
 			children = (
 				2D04D1091CBE966100BD8600 /* O-Key */,
 				2D04D1081CBE966100BD8600 /* Products */,
+				4CFD13A916EFBAC48CAE1050 /* Pods */,
+				3B8257F2F04C3BB6CC2AFC85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +77,24 @@
 			path = "O-Key";
 			sourceTree = "<group>";
 		};
+		3B8257F2F04C3BB6CC2AFC85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1F8D0C71CCE70A900CBC072 /* SVProgressHUD.framework */,
+				8CED1F4BBE17E8F19A31FC25 /* Pods_O_Key.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CFD13A916EFBAC48CAE1050 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED7F2CD0E664CF41F2ABF9F0 /* Pods-O-Key.debug.xcconfig */,
+				887AFE9C1C226173D0FE13D3 /* Pods-O-Key.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +102,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D04D1191CBE966100BD8600 /* Build configuration list for PBXNativeTarget "O-Key" */;
 			buildPhases = (
+				4F6BC13E22E79D144283449A /* Check Pods Manifest.lock */,
 				2D04D1031CBE966100BD8600 /* Sources */,
 				2D04D1041CBE966100BD8600 /* Frameworks */,
 				2D04D1051CBE966100BD8600 /* Resources */,
+				EEB8BA466F8EA91738634939 /* Embed Pods Frameworks */,
+				314FAEA4F20C6E34C76AF1B3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +164,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		314FAEA4F20C6E34C76AF1B3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-O-Key/Pods-O-Key-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F6BC13E22E79D144283449A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EEB8BA466F8EA91738634939 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-O-Key/Pods-O-Key-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D04D1031CBE966100BD8600 /* Sources */ = {
@@ -254,13 +333,18 @@
 		};
 		2D04D11A1CBE966100BD8600 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED7F2CD0E664CF41F2ABF9F0 /* Pods-O-Key.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "O-Key/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "keio.O-Key";
+				PRODUCT_BUNDLE_IDENTIFIER = "mario.O-Key";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -268,13 +352,18 @@
 		};
 		2D04D11B1CBE966100BD8600 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 887AFE9C1C226173D0FE13D3 /* Pods-O-Key.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "O-Key/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "keio.O-Key";
+				PRODUCT_BUNDLE_IDENTIFIER = "mario.O-Key";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
