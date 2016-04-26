@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var openButton: UIButton!
     @IBOutlet weak var lockButton: UIButton!
     
+    var name:NSUserDefaults = NSUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -41,10 +43,12 @@ class ViewController: UIViewController {
         openButton.enabled = false
         lockButton.enabled = false
         
+        let reqData:NSString = "message=\(message)&name=\(name.objectForKey("name") as! String)"
+        let myData:NSData = reqData.dataUsingEncoding(NSUTF8StringEncoding)!
         let url = NSURL(string: "http://133.27.171.30/~eigen/open.php")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
-        request.HTTPBody = "message=\(message)".dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = myData
         let result = try? NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
         let data = NSString(data: result!, encoding: NSUTF8StringEncoding) as! String
         print(data)
