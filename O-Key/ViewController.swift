@@ -12,11 +12,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var openButton: UIButton!
     @IBOutlet weak var lockButton: UIButton!
+    @IBOutlet weak var keyStateLabel: UILabel!
     
     var name:NSUserDefaults = NSUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nowUpdate()
+        var timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "nowUpdate", userInfo: nil, repeats: true)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -26,36 +29,48 @@ class ViewController: UIViewController {
     }
 
     
-    //push OPEN
+    //OPENを押した時
     @IBAction func open(sender: AnyObject) {
         sendMessage("open")
             }
     
-    //push LOCK
+    //LOCKを押した時
     @IBAction func lock(sender: AnyObject) {
         sendMessage("lock")
     }
     
     
-    //send message to server
+    //サーバにポストする
     func sendMessage(message:String){
         
         openButton.enabled = false
         lockButton.enabled = false
         
-        let reqData:NSString = "message=\(message)&name=\(name.objectForKey("name") as! String)"
+        var reqData:NSString = "message=\(message)&name=\(name.objectForKey("name") as! String)"
+        var url = NSURL(string: "http://133.27.171.30/~eigen/open.php")
+        
+        if (message == "update") {
+            reqData = "message=\(message)"
+            url = NSURL(string: "http://133.27.171.30/~eigen/update.php")
+            
+        }
+        
         let myData:NSData = reqData.dataUsingEncoding(NSUTF8StringEncoding)!
-        let url = NSURL(string: "http://133.27.171.30/~eigen/open.php")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.HTTPBody = myData
         let result = try? NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
         let data = NSString(data: result!, encoding: NSUTF8StringEncoding) as! String
         print(data)
+        keyStateLabel.text = data
         
         openButton.enabled = true
         lockButton.enabled = true
 
+    }
+    
+    func nowUpdate(){
+        sendMessage("update")
     }
 
 }
