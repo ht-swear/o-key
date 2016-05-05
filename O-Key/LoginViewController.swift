@@ -52,7 +52,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 
                 let reqData:NSString = "name=\(userName)"
                 let myData:NSData = reqData.dataUsingEncoding(NSUTF8StringEncoding)!
-                let url: NSURL! = NSURL(string: "http://life-cloud.ht.sfc.keio.ac.jp/~eigen/login.php")
+                let url: NSURL! = NSURL(string: "http://life-cloud.ht.sfc.keio.ac.jp/~eigen/key/login.php")
                 let request = NSMutableURLRequest(URL: url)
                 
                 request.HTTPMethod = "POST"

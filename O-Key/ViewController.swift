@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ViewController: UIViewController {
     
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         nowUpdate()
-        var timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "nowUpdate", userInfo: nil, repeats: true)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "nowUpdate", userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,12 +38,22 @@ class ViewController: UIViewController {
     
     //OPENを押した時
     @IBAction func open(sender: AnyObject) {
-        sendMessage("open")
-            }
+        if(keyStateLabel.text == "open"){
+            SVProgressHUD.showErrorWithStatus("すでに空いています")
+        }
+        else{
+            sendMessage("open")
+        }
+    }
     
     //LOCKを押した時
     @IBAction func lock(sender: AnyObject) {
-        sendMessage("lock")
+        if(keyStateLabel.text == "lock"){
+            SVProgressHUD.showErrorWithStatus("すでに閉まっています")
+        }
+        else{
+            sendMessage("lock")
+        }
     }
     
     
@@ -57,11 +68,15 @@ class ViewController: UIViewController {
         
         if (message == "update") {
             reqData = "message=\(message)"
-            url = NSURL(string: "http://133.27.171.30/~eigen/update.php")
+            url = NSURL(string: "http://133.27.171.30/~eigen/key/update.php")
             
-        }else{
+        }else if(message == "open"){
             reqData = "message=\(message)&name=\(name.objectForKey("name") as! String)"
-            url = NSURL(string: "http://133.27.171.30/~eigen/open.php")
+            url = NSURL(string: "http://133.27.171.30/~eigen/key/open.php")
+        
+        }else if(message == "lock"){
+            reqData = "message=\(message)&name=\(name.objectForKey("name") as! String)"
+            url = NSURL(string: "http://133.27.171.30/~eigen/key/close.php")
         }
         
         let myData:NSData = reqData.dataUsingEncoding(NSUTF8StringEncoding)!
@@ -71,8 +86,10 @@ class ViewController: UIViewController {
         
         if(message == "update"){
             let result = try? NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: self.postUpdate)
-        }
-        else{
+        }else if(message == "open"){
+            let result = try? NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: self.postKeyState)
+        
+        }else if(message == "lock"){
             let result = try? NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: self.postKeyState)
         }
         
