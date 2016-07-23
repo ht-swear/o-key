@@ -13,6 +13,7 @@
 		2D04D1121CBE966100BD8600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D04D1111CBE966100BD8600 /* Assets.xcassets */; };
 		2D04D1151CBE966100BD8600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D04D1131CBE966100BD8600 /* LaunchScreen.storyboard */; };
 		2D19F8611CC9BA9F00D907AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F8601CC9BA9F00D907AF /* LoginViewController.swift */; };
+		ACCA30B81D42CE7300B01F58 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA30B71D42CE7300B01F58 /* CoreBluetooth.framework */; };
 		B1F8D0C81CCE70A900CBC072 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F8D0C71CCE70A900CBC072 /* SVProgressHUD.framework */; };
 		FE5C195371897440E5A9C126 /* Pods_O_Key.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CED1F4BBE17E8F19A31FC25 /* Pods_O_Key.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		2D19F8601CC9BA9F00D907AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		887AFE9C1C226173D0FE13D3 /* Pods-O-Key.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-O-Key.release.xcconfig"; path = "Pods/Target Support Files/Pods-O-Key/Pods-O-Key.release.xcconfig"; sourceTree = "<group>"; };
 		8CED1F4BBE17E8F19A31FC25 /* Pods_O_Key.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_O_Key.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACCA30B71D42CE7300B01F58 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		B1F8D0C71CCE70A900CBC072 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		ED7F2CD0E664CF41F2ABF9F0 /* Pods-O-Key.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-O-Key.debug.xcconfig"; path = "Pods/Target Support Files/Pods-O-Key/Pods-O-Key.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCA30B81D42CE7300B01F58 /* CoreBluetooth.framework in Frameworks */,
 				B1F8D0C81CCE70A900CBC072 /* SVProgressHUD.framework in Frameworks */,
 				FE5C195371897440E5A9C126 /* Pods_O_Key.framework in Frameworks */,
 			);
@@ -80,6 +83,7 @@
 		3B8257F2F04C3BB6CC2AFC85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACCA30B71D42CE7300B01F58 /* CoreBluetooth.framework */,
 				B1F8D0C71CCE70A900CBC072 /* SVProgressHUD.framework */,
 				8CED1F4BBE17E8F19A31FC25 /* Pods_O_Key.framework */,
 			);
@@ -131,6 +135,11 @@
 					2D04D1061CBE966100BD8600 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = RHNH48U726;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

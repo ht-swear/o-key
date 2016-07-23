@@ -50,20 +50,20 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             let okAction = UIAlertAction(title: "OK", style: .Default){
                 action in
                 
-                let reqData:NSString = "name=\(userName)"
-                let myData:NSData = reqData.dataUsingEncoding(NSUTF8StringEncoding)!
-                let url: NSURL! = NSURL(string: "http://life-cloud.ht.sfc.keio.ac.jp/~eigen/key/login.php")
-                let request = NSMutableURLRequest(URL: url)
-                
-                request.HTTPMethod = "POST"
-                request.HTTPBody = myData
-                //データベースに入れる
-                let result = try? NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
+//                let reqData:NSString = "name=\(userName)"
+//                let myData:NSData = reqData.dataUsingEncoding(NSUTF8StringEncoding)!
+//                let url: NSURL! = NSURL(string: "http://life-cloud.ht.sfc.keio.ac.jp/~eigen/key/login.php")
+//                let request = NSMutableURLRequest(URL: url)
+//                
+//                request.HTTPMethod = "POST"
+//                request.HTTPBody = myData
+//                //データベースに入れる
+//                let result = try? NSURLConnection.sendSynchronousRequest(request, returningResponse: nil)
                 
                 self.name.setObject(userName, forKey: "name")
                 
-                let resData = NSString(data: result!, encoding: NSUTF8StringEncoding) as! String
-                print(resData)
+//                let resData = NSString(data: result!, encoding: NSUTF8StringEncoding) as! String
+//                print(resData)
                 //ページ移動
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let firstViewController = storyBoard.instantiateViewControllerWithIdentifier("FirstViewController")
