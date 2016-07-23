@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let firstViewController = storyBoard.instantiateViewControllerWithIdentifier("FirstViewController")
         let loginViewController = storyBoard.instantiateViewControllerWithIdentifier("LoginViewController")
-        //        userDefaults.removeObjectForKey("uid")
+                userDefaults.removeObjectForKey("uid")
         if userDefaults.objectForKey("name") != nil{
             self.window?.rootViewController = firstViewController
         }

@@ -24,7 +24,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate,CBPeripheralDel
     
     var reqData:NSString!
     var url:NSURL!
-    
+    var timer:NSTimer!
     var name:NSUserDefaults = NSUserDefaults()
     
     override func viewDidLoad() {
@@ -63,7 +63,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate,CBPeripheralDel
         self.peripheral = peripheral
         // 接続開始
         self.centralManager.connectPeripheral(peripheral, options: nil)
-        self.centralManager.stopScan()
+//        self.centralManager.stopScan()
     }
     
     // ペリフェラルへの接続が成功すると呼ばれる
@@ -112,14 +112,23 @@ class ViewController: UIViewController, CBCentralManagerDelegate,CBPeripheralDel
         let uuid = CBUUID(string:"0001")
         for aCharacteristic in characteristics {
             if aCharacteristic.UUID == uuid {
+                self.characteristic = aCharacteristic as! CBCharacteristic
                 //usernameの値を送ったとき
                 let ngo = name.objectForKey("name") as! String
                 let data = ngo.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true)
-                peripheral.writeValue(data!, forCharacteristic: aCharacteristic as! CBCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+                peripheral.writeValue(data!, forCharacteristic: self.characteristic, type: CBCharacteristicWriteType.WithResponse)
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: #selector(ViewController.postName(_:)), userInfo: nil, repeats: true)
                 break;
             }
         }
     }
+    func postName(timer:NSTimer){
+        //usernameの値を送ったとき
+        let ngo = name.objectForKey("name") as! String
+        let data = ngo.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true)
+        peripheral.writeValue(data!, forCharacteristic: self.characteristic, type: CBCharacteristicWriteType.WithResponse)
+    }
+    
     //write成功時に呼ばれる
     func peripheral(peripheral: CBPeripheral,didWriteValueForCharacteristic characteristic: CBCharacteristic,error: NSError?)
     {
@@ -133,7 +142,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate,CBPeripheralDel
     
     func centralManager(central: CBCentralManager,didDisconnectPeripheral peripheral:CBPeripheral,error: NSError?) {
         print("接続が切断されました。")
-        
+        central.scanForPeripheralsWithServices(self.serviceUUIDs, options: nil)
+        print("ble searching")
+        self.timer.invalidate()
         if error != nil {
             print("エラー: \(error)")
         }
